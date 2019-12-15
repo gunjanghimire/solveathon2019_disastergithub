@@ -29,7 +29,7 @@
 		}
 
 		/* Set a style for all buttons */
-		button {
+		.button {
 			background-color: rgb(45, 51, 71);
 			color: white;
 			padding: 14px 20px;
@@ -37,6 +37,7 @@
 			border: none;
 			cursor: pointer;
 			width: 100%;
+			size: 5px 5px;
 		}
 
 		button:hover {
@@ -163,7 +164,6 @@
 
 <body>
 	<!-- navbar -->
-
 	<nav class="navbar navbar-expand-lg fixed-top ">
 		<a class="navbar-brand" href="#">Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -192,42 +192,88 @@
 		</div>
 	</nav>
 	<!-- header -->
-	<header class="header ",align="right">
-			<div class="description", style="width:100%">
-					<table align="right">
-						<tr>
-							<th><form action="/action_page.php">
-						<select name="Select Your State">
-						  <option value="Province1">Province-1</option>
-						  <option value="Province2">Province-2</option>
-						  <option value="Province3">Province-3</option>
-						  <option value="Gandaki">Gandaki</option>
-						  <option value="Province5">Province-5</option>
-						  <option value="Karnali">Karnali</option>
-						  <option value="Sudurpaschim">Sudurpaschim</option>
-						</select>
-					  </form> </th> </tr>
-					  <tr> <th><form action="/action_page.php">
-						<select name="Select Your District">
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="fiat">Fiat</option>
-						  <option value="audi">Audi</option>
-						</select>
-					  </form> </th> </tr>
-					  <tr><th><form action="/action_page.php">
-						<select name="Disaster">
-						  <option value="fire">Fire</option>
-						  <option value="flood">Flood</option>
-						  <option value="landslide">Landslide</option>
-						  <option value="thunderbolt">Thunderbolt</option>
-						  <option value="earthquake">Earthquake</option>
-						</select>
-					  </form> </th> </tr>
-						<tr><th><button class="button">Visualize</button></th>
-						</tr>
-					  </table>
-				</div>
+	<header class="header " ,align="right">
+		<div class="description" , style="width:100%">
+			<table align="right">
+				<tr>
+					<th>Loss</th>
+				</tr>
+				<tr>
+					<th>Estimation Parameter</th>
+				</tr>
+				<tr>
+					<th>
+						<form action="/action_page.php">
+							<select name="Select Your State" required>
+								<option value="">Select Province</option>
+								<option value="Province2">Province-1</option>
+								<option value="Province2">Province-2</option>
+								<option value="Province3">Province-3</option>
+								<option value="Gandaki">Gandaki</option>
+								<option value="Province5">Province-5</option>
+								<option value="Karnali">Karnali</option>
+								<option value="Sudurpaschim">Sudurpaschim</option>
+							</select>
+						</form>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<form action="/action_page.php">
+							<select name="Belt" required>
+								<option value="">Select Belt</option>
+								<option value="hill">Hill</option>
+								<option value="mountain">Mountain</option>
+								<option value="terai">Terai</option>
+							</select>
+						</form>
+					</th>
+				</tr>
+				<tr>
+					<th><button id="myBtn" class="button">Predict</button></th>
+					<!-- The Modal -->
+					<div id="myModal" class="modal" data-backdrop="static" data-keyboard="false">
+
+						<!-- Modal content -->
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<img src="images/headerback.jpg" class="img-fluid">
+
+							<input type="button" class="button" value="Download"
+								onClick="window.location.href='file.csv'">
+						</div>
+					</div>
+
+					<script>
+						// Get the modal
+						var modal = document.getElementById("myModal");
+
+						// Get the button that opens the modal
+						var btn = document.getElementById("myBtn");
+
+						// Get the <span> element that closes the modal
+						var span = document.getElementsByClassName("close")[0];
+
+						// When the user clicks the button, open the modal 
+						btn.onclick = function () {
+							modal.style.display = "block";
+						}
+
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function () {
+							modal.style.display = "none";
+						}
+
+						// When the user clicks anywhere outside of the modal, close it
+						window.onclick = function (event) {
+							if (event.target == modal) {
+								modal.style.display = "block";
+							}
+						}
+					</script>
+				</tr>
+			</table>
+		</div>
 	</header>
 
 	<!-- about section -->
@@ -240,7 +286,10 @@
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 					<p>
-						DLorem IPsum IPsum Ipsum Lorem
+						The portal shows the predicted economic loss data of disasters from the year 2011 till present.
+						The data is sourced from BIPAD (Building Information Platform Against Disaster), a
+						government-led integrated disaster information management system (DIMS). The estimated loss data
+						has been predicted using OSL (Ordinary Least Square) Regression model.
 					</p>
 				</div>
 			</div>
@@ -250,22 +299,7 @@
 	<!--Research portfolio -->
 	<div class="portfolio" id="portfolio">
 		<h1 class="text-center">Methodology</h1>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<h4 class="text-center">Engineering</h4>
-					<img src="images/portfolio/port13.png" class="img-fluid">
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<h4 class="text-center">Communication</h4>
-					<img src="images/portfolio/port1.png" class="img-fluid">
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<h4 class="text-center">Space Technology</h4>
-					<img src="images/portfolio/port6.png" class="img-fluid">
-				</div>
-			</div>
-		</div>
+
 	</div>
 
 	<!-- Team section -->
@@ -292,7 +326,7 @@
 					<div class="des">
 						Ms. Jane Nobody
 					</div>
-					<span class="text-muted">Research Scientist</span>
+					<span class="text-muted">Researcher</span>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-12 item">
 					<img src="images/team-3.jpg" class="img-fluid" alt="team">
@@ -353,7 +387,8 @@
 	<div class="footer">
 		</br>
 		© 2019 Disclaimer:
-		<a href="index.html"> The prediction modelling is done using self reported data sources, please use caution using the data.</a>
+		<a href="index.html"> The prediction modelling is done using self reported data sources, please use caution
+			using the data.</a>
 		<!-- Copyright -->
 	</div>
 </body>
