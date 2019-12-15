@@ -1,5 +1,6 @@
 # solveathon2019_disastergithub
 Github Repository for the Disaster Vulnerability Mapping at Local Level
+![Our logo](https://github.com/gunjanghimire/solveathon2019_disastergithub/blob/master/disaster%20management/images/logo.png)
 
 # Problem Statement
 Vulnerability indicators are constraining the ability of the local entities to allocate budget.
